@@ -28,14 +28,14 @@ const HomePage = () => {
         <div className="w-full px-8 bg-gradient-to-br from-[#FFF3D9] via-[#FFD6E1] to-[#DDA0DD] max-sm:px-4 max-md:px-6">
             <div className="mx-auto max-w-[1400px] py-8">
                 <div className="flex items-center gap-4 py-4">
-                    <div className="w-72 h-16 rounded-full grid place-items-center">
+                    <div className="w-72 h-16 rounded-full grid place-items-center max-sm:w-36 max-sm:h-10">
                         <img
                             src='/image/collab-logo.png'
                             alt='logo-of-fie-and-gims-collaboration'
-                            className='w-full h-16'
+                            className='w-full h-16 max-sm:h-10'
                         />
                     </div>
-                    <div className="bg-fuchsia-950/35 text-white font-novaSemi px-4 rounded-full text-base py-1 hover:bg-fuchsia-950/30">
+                    <div className="bg-fuchsia-950/35 text-white font-novaSemi px-4 rounded-full text-base py-1 hover:bg-fuchsia-950/30 max-sm:text-sm">
                         Venture-I 1.0 →
                     </div>
                 </div>
