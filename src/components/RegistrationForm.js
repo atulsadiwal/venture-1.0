@@ -6,7 +6,7 @@ import Step2 from './Step2';
 import OTPVerification from './OTPVerification';
 import { API_NODE_URL } from '../../config';
 
-const RegistrationForm = ({ onClose, onSuccess }) => {
+const RegistrationForm = ({ onClose }) => {
     const [step, setStep] = useState(1);
     const [isSuccessPopupOpen, setIsSuccessPopupOpen] = useState(false);
     const [showOTPVerification, setShowOTPVerification] = useState(false);
@@ -86,7 +86,7 @@ const RegistrationForm = ({ onClose, onSuccess }) => {
 
             if (result?.status) {
                 setIsSuccessPopupOpen(true);
-                onSuccess();
+                // onSuccess();
             } else {
                 console.error('Registration failed!');
                 throw new Error('Registration failed');
@@ -100,8 +100,8 @@ const RegistrationForm = ({ onClose, onSuccess }) => {
     if (!isOpen) return null;
 
     return (
-        <div className="fixed inset-0 bg-gray-600 bg-opacity-50 backdrop-blur-sm overflow-y-auto h-full w-full flex items-center justify-center">
-            <div ref={modalRef} className="bg-white p-8 rounded-lg shadow-md w-full max-w-md">
+        <div className="fixed inset-0 bg-gray-600 bg-opacity-50 backdrop-blur-sm overflow-y-auto h-full w-full flex items-center justify-center px-2">
+            <div ref={modalRef} className="relative bg-white p-8 max-sm:p-5 rounded-lg shadow-md w-full max-w-md">
                 <button
                     onClick={() => setIsOpen(false)}
                     className="absolute top-3 right-3 p-1 rounded-full hover:bg-gray-200"
@@ -127,8 +127,8 @@ const RegistrationForm = ({ onClose, onSuccess }) => {
                 <ToastContainer position="top-center" autoClose={1000} hideProgressBar={false} newestOnTop={false} closeOnClick rtl={false} pauseOnFocusLoss draggable pauseOnHover theme="light" />
             </div>
             {isSuccessPopupOpen && (
-                <div className="fixed inset-0 bg-gray-600 bg-opacity-50 backdrop-blur-sm flex items-center justify-center">
-                    <div className="bg-white p-8 rounded-lg shadow-md w-full max-w-sm flex flex-col justify-center items-center text-center">
+                <div className="fixed inset-0 bg-gray-600 bg-opacity-50 backdrop-blur-sm flex items-center justify-center px-3">
+                    <div className="bg-white p-8 max-sm:p-4 rounded-lg shadow-md w-full max-w-sm flex flex-col justify-center items-center text-center">
                         <img src="/image/emoji.gif" alt="Emoji" />
                         <h2 className="mt-5 text-2xl font-poppinsBold text-green-600 mb-4">Registration Successful!</h2>
                         <p className="text-gray-600 font-poppinsMedium mb-6">Thank you for registering. You can now proceed to explore.</p>

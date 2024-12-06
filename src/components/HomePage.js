@@ -11,12 +11,12 @@ const HomePage = () => {
         setRegistrationForm(false);
     };
 
-    useEffect(() => {
-        const storedStatus = localStorage.getItem("isRegistered");
-        if (storedStatus === "true") {
-            setIsRegistered(true);
-        }
-    }, []);
+    // useEffect(() => {
+    //     const storedStatus = localStorage.getItem("isRegistered");
+    //     if (storedStatus === "true") {
+    //         setIsRegistered(true);
+    //     }
+    // }, []);
 
     const handleRegistrationSuccess = () => {
         setIsRegistered(true);
@@ -24,10 +24,15 @@ const HomePage = () => {
         localStorage.setItem("isRegistered", "true");
     };
 
+    const handleOpenRegistrationForm = () => {
+        setRegistrationForm(false); // Close if open
+        setTimeout(() => setRegistrationForm(true), 0); // Open after resetting
+    };
+
     return (
         <div className="w-full px-8 bg-gradient-to-br from-[#FFF3D9] via-[#FFD6E1] to-[#DDA0DD] max-sm:px-4 max-md:px-6">
             <div className="mx-auto max-w-[1400px] py-8">
-                <div className="flex items-center gap-4 py-4">
+                <div className="flex max-sm:flex-wrap items-center gap-4 py-4">
                     <div className="w-72 h-16 rounded-full grid place-items-center">
                         <img
                             src='/image/collab-logo.png'
@@ -53,7 +58,7 @@ const HomePage = () => {
                         <div className="mt-8 flex gap-4 max-md:mt-6 max-sm:mt-5">
                             {!isRegistered && ( // Conditionally render the Register button
                                 <button
-                                    onClick={() => setRegistrationForm(true)}
+                                    onClick={handleOpenRegistrationForm}
                                     className="rounded-full text-lg px-8 py-2 bg-indigo-950 font-poppinsRegular max-sm:text-sm max-md:text-base text-white text-center hover:bg-primary-dark max-sm:px-4 max-md:px-6"
                                 >
                                     Register Now

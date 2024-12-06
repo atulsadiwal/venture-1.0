@@ -80,7 +80,7 @@ const WhatsInStore = () => {
                 </div>
             </section>
 
-            <section className='h-[40vh] bg-BG1 bg-cover bg-no-repeat bg-fixed'></section>
+            <section className='h-[40vh] bg-BG1 max-sm:bg-center bg-cover bg-no-repeat bg-fixed'></section>
         </>
     );
 }

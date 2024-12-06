@@ -40,9 +40,9 @@ const OTPVerification = ({ onVerify, onCancel, mobile }) => {
     };
 
     return (
-        <div className="fixed inset-0 bg-gray-600 bg-opacity-50 backdrop-blur-sm overflow-y-auto h-full w-full flex items-center justify-center ">
-            <div className="bg-white p-8 rounded-lg shadow-xl w-full max-w-sm transform transition-transform duration-300 scale-100 animate-scaleIn">
-                <h2 className="text-2xl font-bold mb-4 text-center text-gray-800">OTP Verification</h2>
+        <div className="fixed inset-0 bg-gray-600 bg-opacity-50 backdrop-blur-sm overflow-y-auto h-full w-full flex items-center justify-center px-4">
+            <div className="bg-white p-8 rounded-lg shadow-xl w-full max-w-sm transform transition-transform duration-300 max-sm:p-4 scale-100 animate-scaleIn">
+                <h2 className="text-2xl font-bold mb-4 text-center max-sm:text-xl text-gray-800">OTP Verification</h2>
                 <form onSubmit={handleSubmit} className="space-y-4">
                     <div>
                         <label htmlFor="otp" className="block text-sm font-medium text-gray-700">Enter OTP</label>
