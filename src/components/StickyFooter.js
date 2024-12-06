@@ -1,6 +1,30 @@
+"use client";
+
+import { useEffect, useState } from "react";
 import { socialMediaLinks } from "../utils/socialMediaLinks.js";
 
 const StickyFooter = ({ ShowState }) => {
+
+  const [lastScrollY, setLastScrollY] = useState(0);
+  const [showFooter, setShowFooter] = useState(true);
+
+  const handleScroll = () => {
+    if (window.scrollY < lastScrollY) {
+      setShowFooter(false);
+    } else {
+      setShowFooter(true);
+    }
+    setLastScrollY(window.scrollY);
+  };
+
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, [lastScrollY]);
+
   return (
     <>
       <section className="max-w-screen-2xl mx-auto w-full duration-500">
@@ -32,9 +56,9 @@ const StickyFooter = ({ ShowState }) => {
         </div>
       </section>
       <section className="max-w-screen-2xl mx-auto w-full bg-red-300 duration-500">
-        <div className={`transition-all overflow-hidden ${ShowState ? "h-0" : "h-20 max-md:h-10"} z-50 fixed bottom-5 left-0 w-full flex justify-center items-center max-md:gap-2 gap-5 px-5 max-[400px]:px-2 max-md:flex-col-reverse`}>
-          <div className="w-full bg-gradient-to-r from-purple-500 via-pink-500 to-red-500 text-white flex justify-center items-center py-3 px-5 shadow-xl rounded-xl">
-            <marquee className="font-semibold text-sm md:text-lg tracking-wide">
+        <div className={`transition-all overflow-hidden ${showFooter ? "h-14" : "h-0"} z-50 fixed bottom-3 left-0 w-full flex justify-center items-center max-md:gap-2 gap-5 px-5 max-[400px]:px-2 max-md:flex-col-reverse`}>
+          <div className="w-full bg-gradient-to-r from-purple-500 via-pink-500 to-red-500 text-white flex justify-center items-center py-3 px-5 shadow-xl rounded-xl max-sm:py-1.5 max-sm:px-2.5">
+            <marquee className="font-poppinsMedium text-sm md:text-lg tracking-wide">
               Stay tuned on our social media channels for more updates, announcements, and sneak peaks into what's coming next!
             </marquee>
           </div>
