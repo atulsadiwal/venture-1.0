@@ -1,0 +1,78 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: 'Font1';
+  src: url('../assets/fonts/FONT1.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Font2';
+  src: url('../assets/fonts/FONT2.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'caveatBold';
+  src: url('../assets/fonts/caveatBold.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'caveatMedium';
+  src: url('../assets/fonts/caveatMedium.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'caveatRegular';
+  src: url('../assets/fonts/caveatRegular.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'caveatSemiBold';
+  src: url('../assets/fonts/caveatSemiBold.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'cursiveBold';
+  src: url('../assets/fonts/cursiveBold.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'cursiveMedium';
+  src: url('../assets/fonts/cursiveMedium.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'cursiveRegular';
+  src: url('../assets/fonts/cursiveRegular.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'cursiveSemiBold';
+  src: url('../assets/fonts/cursiveSemiBold.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'poppinsBold';
+  src: url('../assets/fonts/poppinsBold.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'poppinsLight';
+  src: url('../assets/fonts/poppinsLight.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'poppinsMedium';
+  src: url('../assets/fonts/poppinsMedium.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'poppinsRegular';
+  src: url('../assets/fonts/poppinsRegular.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'poppinsSemiBold';
+  src: url('../assets/fonts/poppinsSemiBold.ttf') format('truetype');
+}
