@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Step1 from './Step1';
@@ -24,21 +24,6 @@ const RegistrationForm = ({ onClose }) => {
         collegeName: '',
         highestQualification: ''
     });
-
-    const modalRef = useRef(null);
-
-    useEffect(() => {
-        const handleClickOutside = (event) => {
-            if (modalRef.current && !modalRef.current.contains(event.target)) {
-                onClose(); // Close the modal when clicking outside
-            }
-        };
-
-        document.addEventListener('mousedown', handleClickOutside);
-        return () => {
-            document.removeEventListener('mousedown', handleClickOutside);
-        };
-    }, [onClose]);
 
     const handleStep1Submit = async (data) => {
         try {
@@ -121,7 +106,7 @@ const RegistrationForm = ({ onClose }) => {
 
     return (
         <div className="fixed inset-0 bg-gray-600 bg-opacity-50 backdrop-blur-sm overflow-y-auto h-full w-full flex items-center justify-center px-2">
-            <div ref={modalRef} className="relative bg-white p-8 max-sm:p-5 rounded-lg shadow-md w-full max-w-md">
+            <div className="relative bg-white p-8 max-sm:p-5 rounded-lg shadow-md w-full max-w-md">
                 <button
                     onClick={() => setIsOpen(false)}
                     className="absolute top-3 right-3 p-1 rounded-full hover:bg-gray-200"
