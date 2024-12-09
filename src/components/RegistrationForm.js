@@ -9,6 +9,7 @@ import { API_NODE_URL } from '../../config';
 const RegistrationForm = ({ onClose }) => {
     const [step, setStep] = useState(1);
     const [isSuccessPopupOpen, setIsSuccessPopupOpen] = useState(false);
+    const [countdown, setCountdown] = useState(3);
     const [showOTPVerification, setShowOTPVerification] = useState(false);
     const [isOpen, setIsOpen] = useState(true);
     const [sid, setSid] = useState('');
@@ -86,7 +87,6 @@ const RegistrationForm = ({ onClose }) => {
 
             if (result?.status) {
                 setIsSuccessPopupOpen(true);
-                // onSuccess();
             } else {
                 console.error('Registration failed!');
                 throw new Error('Registration failed');
@@ -96,6 +96,26 @@ const RegistrationForm = ({ onClose }) => {
             toast.error('Registration failed. Please try again.');
         }
     };
+
+    useEffect(() => {
+        let timer;
+        if (isSuccessPopupOpen) {
+            // Start the countdown
+            timer = setInterval(() => {
+                setCountdown((prev) => {
+                    if (prev > 1) {
+                        return prev - 1;
+                    } else {
+                        clearInterval(timer);
+                        window.location.href = 'https://www.gims.net.in/'; // Replace with your desired URL
+                        return 0;
+                    }
+                });
+            }, 1000); // Update every second
+        }
+
+        return () => clearInterval(timer); // Cleanup interval
+    }, [isSuccessPopupOpen]);
 
     if (!isOpen) return null;
 
@@ -131,13 +151,9 @@ const RegistrationForm = ({ onClose }) => {
                     <div className="bg-white p-8 max-sm:p-4 rounded-lg shadow-md w-full max-w-sm flex flex-col justify-center items-center text-center">
                         <img src="/image/emoji.gif" alt="Emoji" />
                         <h2 className="mt-5 text-2xl font-poppinsBold text-green-600 mb-4">Registration Successful!</h2>
-                        <p className="text-gray-600 font-poppinsMedium mb-6">Thank you for registering. You can now proceed to explore.</p>
-                        <button
-                            onClick={() => setIsSuccessPopupOpen(false)}
-                            className="bg-green-500 text-white px-4 py-1.5 font-poppinsSemiBold rounded-lg hover:bg-green-600"
-                        >
-                            Close
-                        </button>
+                        <p className="text-gray-600 font-poppinsMedium mb-6">
+                            Thank you for registering. Redirecting in {countdown} seconds...
+                        </p>
                     </div>
                 </div>
             )}

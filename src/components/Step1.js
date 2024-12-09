@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 
 const Step1 = ({ onSubmit }) => {
     const [isLoading, setIsLoading] = useState(false);
+    const [errors, setErrors] = useState({});
     const [formData, setFormData] = useState({
         name: '',
         email: '',
@@ -13,14 +14,32 @@ const Step1 = ({ onSubmit }) => {
 
     const handleChange = (e) => {
         const { name, value } = e.target;
+        if (name === 'mobile') {
+            if (!/^\d{0,10}$/.test(value)) {
+                return;
+            }
+        }
         setFormData(prevData => ({
             ...prevData,
             [name]: value
+        }));
+
+        setErrors((prevErrors) => ({
+            ...prevErrors,
+            [name]: ''
         }));
     };
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        if (!/^\d{10}$/.test(formData.mobile)) {
+            setErrors((prevErrors) => ({
+                ...prevErrors,
+                mobile: 'Mobile number must be exactly 10 digits.'
+            }));
+            return;
+        }
+
         setIsLoading(true);
         await onSubmit(formData);
         setIsLoading(false);
@@ -63,6 +82,9 @@ const Step1 = ({ onSubmit }) => {
                     required
                     className="mt-1 block w-full py-1.5 px-3 rounded-md border outline-none border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
                 />
+                {errors.mobile && (
+                    <p className="mt-1 text-sm text-red-600">{errors.mobile}</p>
+                )}
             </div>
             <div>
                 <label htmlFor="gender" className="block text-sm font-medium text-gray-700">Gender</label>
@@ -90,4 +112,3 @@ const Step1 = ({ onSubmit }) => {
 };
 
 export default Step1;
-
