@@ -93,6 +93,7 @@ const RegistrationForm = ({ onClose }) => {
                     } else {
                         clearInterval(timer);
                         window.location.href = 'https://www.gims.net.in/'; // Replace with your desired URL
+                        setIsSuccessPopupOpen(false);
                         return 0;
                     }
                 });
